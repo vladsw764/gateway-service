@@ -26,7 +26,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
     private final RedisHashProcessor redisHashProcessor;
 
     @Value("${redis.record.key}")
-    private static String RECORD_KEY;
+    private String RECORD_KEY;
 
 
     public AuthFilter(RedisHashProcessor redisHashProcessor) {

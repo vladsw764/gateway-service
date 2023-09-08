@@ -19,7 +19,7 @@ public class ApiKeyController {
     private final RedisHashProcessor redisHashProcessor;
 
     @Value("${redis.record.key}")
-    private static String RECORD_KEY;
+    private String RECORD_KEY;
 
     public ApiKeyController(RedisHashProcessor redisHashProcessor) {
         this.redisHashProcessor = redisHashProcessor;

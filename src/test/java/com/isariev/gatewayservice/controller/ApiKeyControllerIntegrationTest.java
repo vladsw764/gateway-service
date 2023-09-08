@@ -2,12 +2,12 @@ package com.isariev.gatewayservice.controller;
 
 import com.isariev.gatewayservice.config.RedisHashProcessor;
 import com.isariev.gatewayservice.dto.ApiKey;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.UUID;
 
 @SpringBootTest
 @AutoConfigureWebTestClient
+@ActiveProfiles("test")
 public class ApiKeyControllerIntegrationTest {
 
     @Autowired
@@ -24,12 +25,7 @@ public class ApiKeyControllerIntegrationTest {
     private RedisHashProcessor redisHashProcessor;
 
     @Value("${redis.record.key}")
-    private static String RECORD_KEY;
-
-    @BeforeEach
-    void setUp() {
-        redisHashProcessor.deleteHash(RECORD_KEY);
-    }
+    private String RECORD_KEY;
 
     @Test
     void testGenerateApiKey() {
